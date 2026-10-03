@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Palitaw Express | Filipino Palitaw Delivery</title>
+  <meta name="description" content="Freshly made Filipino Palitaw delivered to your door.">
+  <style>
+    
+:root {
+  --white: #FFFDF7;
+  --cream: #F7E7C6;
+  --gold: #E5A928;
+  --brown: #7A4B2A;
+  --dark: #3B2416;
+  --red: #B84A39;
+  --shadow: 0 8px 24px rgba(59, 36, 22, 0.12);
+  --head: Georgia, "Times New Roman", serif;
+  --body: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--body);
+  background: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--red);
+}
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: var(--head);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Filipino banig-style weave strip */
+.weave {
+  height: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--red) 0 10px,
+    var(--gold) 10px 20px,
+    var(--brown) 20px 30px,
+    var(--cream) 30px 40px
+  );
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(59, 36, 22, 0.1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1150px;
+  margin: auto;
+  padding: 0.7rem 1.2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  color: var(--gold);
+  margin-left: 0.3rem;
+}
+
+.links {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  flex-direction: column;
+  padding: 1rem 1.2rem;
+  gap: 0.4rem;
+  box-shadow: var(--shadow);
+}
+
+.links.open {
+  display: flex;
+}
+
+.links a {
+  display: block;
+  padding: 0.6rem 0;
+  text-decoration: none;
+  color: var(--brown);
+  font-weight: 600;
+}
+
+.links a:hover {
+  color: var(--red);
+}
+
+.burger {
+  font-size: 1.6rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--dark);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.cart-btn {
+  background: var(--dark);
+  color: var(--cream);
+  border: 0;
+  border-radius: 99px;
+  padding: 0.6rem 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  transition: transform 0.2s;
+}
+
+.cart-btn:hover {
+  transform: scale(1.05);
+}
+
+.cart-btn b {
+  background: var(--gold);
+  color: var(--dark);
+  border-radius: 99px;
+  padding: 0 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.cart-btn.bump {
+  animation: bump 0.4s;
+}
+
+@keyframes bump {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  border: 2px solid var(--gold);
+  border-radius: 99px;
+  padding: 0.8rem 1.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  min-height: 44px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  background: #f0b93c;
+}
+
+.btn.ghost {
+  background: transparent;
+  border-color: var(--brown);
+  color: var(--brown);
+}
+
+.btn.block {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1.4rem 0;
+}
+
+.hero {
+  max-width: 1150px;
+  margin: auto;
+  padding: 2rem 1.2rem 3rem;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 7vw, 3.6rem);
+  line-height: 1.1;
+  margin: 0.8rem 0 1rem;
+  color: var(--dark);
+}
+
+.chip {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--brown);
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tag {
+  font-family: var(--head);
+  font-style: italic;
+  color: var(--brown);
+}
+
+.hero-img {
+  order: -1;
+}
+
+.hero-img img {
+  border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
+  box-shadow: var(--shadow);
+  border: 8px solid var(--cream);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+.section {
+  padding: 3.5rem 1.2rem;
+  max-width: 1150px;
+  margin: auto;
+}
+
+.section.alt {
+  max-width: none;
+  background: var(--cream);
+}
+
+.section.alt > * {
+  max-width: 1150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section h2 {
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  text-align: center;
+  margin-bottom: 1.6rem;
+  color: var(--dark);
+}
+
+.center {
+  text-align: center;
+  margin: 0.6rem 0;
+}
+
+.lead {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 2rem !important;
+}
+
+.grid {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: 1fr;
+}
+
+.card,
+.feature,
+.review {
+  background: var(--white);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover,
+.feature:hover,
+.review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(59, 36, 22, 0.18);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.card .body {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: calc(100% - 0px);
+}
+
+.card h3 {
+  cursor: pointer;
+  color: var(--brown);
+}
+
+.card p {
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.price {
+  font-weight: 800;
+  color: var(--red);
+  font-size: 1.15rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--cream);
+  border-radius: 99px;
+}
+
+.qty button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--brown);
+  border-radius: 50%;
+}
+
+.qty button:hover {
+  background: var(--cream);
+}
+
+.qty span {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.feature,
+.review {
+  padding: 1.6rem;
+  text-align: center;
+}
+
+.feature span {
+  font-size: 2.4rem;
+}
+
+.review p {
+  font-family: var(--head);
+  font-size: 1.15rem;
+  margin: 0.6rem 0;
+}
+
+.review cite {
+  color: var(--brown);
+  font-weight: 700;
+}
+
+.search {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 1rem;
+  padding: 0.9rem 1.3rem;
+  border: 2px solid var(--gold);
+  border-radius: 99px;
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--dark);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.chipbtn {
+  border: 2px solid var(--brown);
+  background: transparent;
+  color: var(--brown);
+  padding: 0.55rem 1.2rem;
+  border-radius: 99px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  transition: 0.2s;
+}
+
+.chipbtn.active,
+.chipbtn:hover {
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.empty {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.steps {
+  list-style: none;
+  max-width: 420px;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.steps li {
+  position: relative;
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  font-weight: 700;
+  opacity: 0.45;
+  transition: 0.5s;
+}
+
+.steps li:not(:last-child)::after {
+  content: "⬇";
+  position: absolute;
+  left: 50%;
+  bottom: -1.4rem;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+}
+
+.steps li.done {
+  opacity: 1;
+  background: #e3efc9;
+}
+
+.steps li.current {
+  opacity: 1;
+  background: var(--gold);
+  box-shadow: var(--shadow);
+  transform: scale(1.04);
+}
+
+.contact {
+  display: grid;
+  gap: 2rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+input:not([type=radio]):not([type=checkbox]),
+textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2d3ae;
+  border-radius: 14px;
+  font: inherit;
+  background: var(--white);
+  color: var(--dark);
+}
+
+input.bad,
+textarea.bad {
+  border-color: var(--red);
+  background: #fdeeea;
+}
+
+.footer {
+  background: var(--dark);
+  color: var(--cream);
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.footer .weave {
+  margin-bottom: 2rem;
+}
+
+.footer h3 {
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.flinks {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+
+.flinks a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+.flinks a:hover {
+  color: var(--gold);
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.social a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brown);
+  display: grid;
+  place-items: center;
+  transition: 0.2s;
+}
+
+.social a:hover {
+  background: var(--gold);
+  transform: translateY(-3px);
+}
+
+.social svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--cream);
+}
+
+.social a:hover svg {
+  fill: var(--dark);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(59, 36, 22, 0.55);
+  z-index: 90;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(100%, 420px);
+  background: var(--white);
+  z-index: 100;
+  padding: 1.2rem;
+  overflow-y: auto;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
+  animation: slide 0.3s;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.x {
+  background: var(--cream);
+  border: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--dark);
+}
+
+.x:hover {
+  background: var(--gold);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--cream);
+}
+
+.item img {
+  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.item small {
+  display: block;
+  color: var(--brown);
+}
+
+.item .row {
+  margin-top: 0.4rem;
+}
+
+.remove {
+  background: none;
+  border: 0;
+  color: var(--red);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.totals {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--cream);
+  border-radius: 16px;
+}
+
+.totals p,
+.summary p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totals .grand,
+.summary .grand {
+  font-weight: 800;
+  font-size: 1.2rem;
+  border-top: 2px dashed var(--brown);
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgba(59, 36, 22, 0.6);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.dialog {
+  position: relative;
+  background: var(--white);
+  border-radius: 24px;
+  width: min(100%, 560px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 1.4rem;
+  animation: pop 0.25s;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+}
+
+.dialog > .x {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  z-index: 2;
+}
+
+.dialog h2 {
+  margin-bottom: 0.8rem;
+  padding-right: 2.5rem;
+}
+
+.dialog h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--brown);
+}
+
+.dialog > div > img {
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.tops label,
+.pay label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+  min-height: 36px;
+}
+
+.summary {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.done-box {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.done-box .no {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--red);
+  margin: 0.6rem 0;
+}
+
+.toasts {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(92%, 360px);
+}
+
+.toast {
+  background: var(--dark);
+  color: var(--cream);
+  padding: 0.8rem 1.2rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--gold);
+  animation: pop 0.25s;
+}
+
+.toast.err {
+  border-left-color: var(--red);
+}
+
+@media (min-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .burger {
+    display: none;
+  }
+
+  .links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: none;
+    padding: 0;
+    gap: 1.6rem;
+    background: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-img {
+    order: 0;
+  }
+
+  #featuredGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #menuGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="#home" class="logo">Palitaw<span>Express</span></a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="links" id="links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="cart-btn" id="cartBtn">Cart 🛒 <b id="cartCount">0</b></button></li>
+    </ul>
+  </nav>
+  <div class="weave" aria-hidden="true"></div>
+</header>
+
+<main id="home">
+  
+  <section class="hero">
+    <div class="hero-text">
+      <p class="chip">🚚 Freshly prepared • Fast delivery • Filipino-made</p>
+      <h1>Authentic Filipino Palitaw, Delivered Fresh.</h1>
+      <p>Enjoy soft, chewy, freshly prepared Palitaw topped with coconut, sugar, and sesame. Order your favorite Filipino delicacy and have it delivered straight to your doorstep.</p>
+      <div class="btn-row">
+        <a href="#menu" class="btn">Order Now</a>
+        <a href="#featured" class="btn ghost">Explore Menu</a>
+      </div>
+      <p class="tag">“A Taste of Filipino Tradition, Delivered to Your Door.”</p>
+    </div>
+    <div class="hero-img"><img src="imgaes/cheese-palitaw.jpg" alt="Plate of Classic Palitaw with coconut and sesame"></div>
+  </section>
+
+  <section class="section" id="featured">
+    <h2>Our Favorite Palitaw</h2>
+    <div class="grid" id="featuredGrid"></div>
+  </section>
+
+  <section class="section alt" id="menu">
+    <h2>Full Menu</h2>
+    <input type="search" id="search" class="search" placeholder="Search for your favorite Palitaw..." aria-label="Search products">
+    <div class="filters" id="filters">
+      <button class="chipbtn active" data-cat="all">All</button>
+      <button class="chipbtn" data-cat="classic">Classic</button>
+      <button class="chipbtn" data-cat="special">Special</button>
+      <button class="chipbtn" data-cat="ube">Ube</button>
+      <button class="chipbtn" data-cat="cheese">Cheese</button>
+    </div>
+    <div class="grid" id="menuGrid"></div>
+    <p class="empty" id="empty" hidden>No Palitaw found. Try another search.</p>
+  </section>
+
+  <section class="section" id="tracking" hidden>
+    <h2>Order Status</h2>
+    <p class="center" id="trackId"></p>
+    <ol class="steps" id="steps">
+      <li>✅ Order Confirmed</li>
+      <li>🧑‍🍳 Preparing Your Palitaw</li>
+      <li>🚚 Out for Delivery</li>
+      <li>🏠 Delivered</li>
+    </ol>
+    <p class="center"><strong>Estimated Delivery: 20–40 minutes</strong></p>
+  </section>
+
+  <section class="section alt" id="about">
+    <h2>Made With Filipino Tradition</h2>
+    <p class="lead">Palitaw is a traditional Filipino rice cake made from glutinous rice dough. It is commonly served with grated coconut, sugar, and sesame seeds. Palitaw Express brings this familiar Filipino delicacy into a convenient modern food-delivery experience.</p>
+    <div class="grid three">
+      <article class="feature"><span>🇵🇭</span><h3>Filipino Tradition</h3><p>Authentic Filipino-inspired flavors.</p></article>
+      <article class="feature"><span>🥥</span><h3>Fresh Ingredients</h3><p>Prepared fresh for every order.</p></article>
+      <article class="feature"><span>🚚</span><h3>Fast Delivery</h3><p>Enjoy your Palitaw without leaving home.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>What Customers Say</h2>
+    <div class="grid three">
+      <blockquote class="review">⭐⭐⭐⭐<p>“The Palitaw tastes just like the one I grew up eating!”</p><cite> Natalie</cite></blockquote>
+      <blockquote class="review">⭐⭐⭐⭐<p>“Soft, sweet, and delivered quickly. Highly recommended!”</p><cite> Roldan</cite></blockquote>
+      <blockquote class="review">⭐⭐⭐<p>“The ube Palitaw is my favorite!”</p><cite> Ruth</cite></blockquote>
+    </div>
+  </section>
+
+  <section class="section alt" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <div>
+        <h3>Palitaw Express</h3>
+        <p>📍 Location: Borongan, Eastern Samar</p>
+        <p>📞 Phone: 05518885627</p>
+        <p>📧 Email: <a href="mailto:palitawballs@gmail.com">palitawballs@gmail.com</a></p>
+      </div>
+      <form id="contactForm" novalidate>
+        <label>Name <input name="name" required></label>
+        <label>Email <input name="email" type="email" required></label>
+        <label>Message <textarea name="message" rows="4" required></textarea></label>
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="weave" aria-hidden="true"></div>
+  <h3>PALITAW EXPRESS</h3>
+  <p>“A Taste of Filipino Tradition, Delivered to Your Door.”</p>
+  <ul class="flinks">
+    <li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li><li><a href="#cart" id="footCart">Cart</a></li>
+  </ul>
+  <div class="social">
+    <a href="https://www.facebook.com/profile.php?id=61593609072567" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6c0-1 .5-1.5 1.500-1.500H17V1h-3c-3 0-4.500 2-4.500 4.500V8H7v3.500h2.500V23H14V11.500h2.800L17.300 8z"/></svg></a>
+    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3zm5 3.500a4.500 4.500 0 110 9 4.500 4.500 0 010-9zm0 2a2.500 2.500 0 100 5 2.500 2.500 0 000-5zM17.500 5.500a1 1 0 110 2 1 1 0 010-2z"/></svg></a>
+    <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16 2h-3v13.500a2.500 2.500 0 11-2.500-2.500c.3 0 .6 0 .9.100V10a5.500 5.500 0 105.600 5.500V8.500A6.500 6.500 0 0020 9.800V6.700A3.700 3.700 0 0116 2z"/></svg></a>
+  </div>
+  <small>© 2026 Palitaw Express. All Rights Reserved.</small>
+</footer>
+
+<div class="overlay" id="cartOverlay" hidden></div>
+<aside class="drawer" id="cart" aria-label="Shopping cart" hidden>
+  <div class="drawer-head"><h2>Your Cart</h2><button class="x" data-close="cart" aria-label="Close cart">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="totals" id="totals"></div>
+  <button class="btn block" id="checkoutBtn">Checkout</button>
+</aside>
+
+<div class="modal" id="productModal" hidden role="dialog" aria-modal="true" aria-label="Product details">
+  <div class="dialog">
+    <button class="x" data-close="productModal" aria-label="Close">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="modal" id="checkoutModal" hidden role="dialog" aria-modal="true" aria-label="Checkout">
+  <div class="dialog">
+    <button class="x" data-close="checkoutModal" aria-label="Close">✕</button>
+    <div id="checkoutBody">
+      <h2>Checkout</h2>
+      <form id="checkoutForm" novalidate>
+        <h3>Customer Information</h3>
+        <label>Full Name <input name="name" autocomplete="name"></label>
+        <label>Mobile Number <input name="phone" inputmode="tel" placeholder="09XX-XXX-XXXX"></label>
+        <label>Delivery Address <input name="address" autocomplete="street-address"></label>
+        <label>Landmark <input name="landmark"></label>
+        <h3>Delivery Instructions</h3>
+        <textarea name="notes" rows="3" placeholder="Additional instructions (optional)"></textarea>
+        <h3>Payment Method</h3>
+        <div class="pay">
+          <label><input type="radio" name="pay" value="Cash on Delivery" checked> Cash on Delivery</label>
+          <label><input type="radio" name="pay" value="GCash"> GCash</label>
+        </div>
+        <h3>Order Summary</h3>
+        <div id="summary" class="summary"></div>
+        <button class="btn block" type="submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
